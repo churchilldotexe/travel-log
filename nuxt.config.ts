@@ -11,6 +11,9 @@ export default defineNuxtConfig({
       standalone: false,
     },
   },
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' }
+  },
   vite: {
     plugins: [
       tailwindcss(),
