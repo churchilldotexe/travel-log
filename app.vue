@@ -1,9 +1,18 @@
 <template>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-  <button class="btn btn-secondary">
-    Secondary
-    <Icon name="tabler:map" />
-  </button>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
+
+<style>
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
+</style>
