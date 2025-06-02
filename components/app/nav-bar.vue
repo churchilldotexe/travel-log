@@ -6,7 +6,8 @@
       </NuxtLink>
     </div>
 
-    <div class="navbar-end">
+    <div class="navbar-end gap-2">
+      <AppThemeToggle />
       <button class="btn btn-accent">
         Sign in with Github
         <Icon name="tabler:brand-github" size="24" />
