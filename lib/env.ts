@@ -4,6 +4,8 @@ import tryParseEnv from "./try-parse";
 
 const EnvSchema = z.object({
   NODE_ENV: z.string(),
+  DATABASE_URL: z.string(),
+  DATABASE_AUTH_TOKEN: z.string(),
 });
 
 export type EnvSchema = z.infer<typeof EnvSchema>;
