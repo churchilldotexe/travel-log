@@ -10,7 +10,7 @@ export default antfu({
     semi: true,
     quotes: "double",
   },
-  ignores: [".pnpm-store/**", "nuxt.config.ts"],
+  ignores: [".pnpm-store/**", "nuxt.config.ts", "**/migrations/*"],
 }, {
   rules: {
     "ts/no-redeclare": "off",
