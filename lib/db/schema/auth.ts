@@ -6,8 +6,8 @@ export const user = sqliteTable("user", {
   email: text().notNull().unique(),
   emailVerified: int({ mode: "boolean" }).$defaultFn(() => false).notNull(),
   image: text(),
-  createdAt: int().$default(() => Date.now()).notNull(),
-  updatedAt: int().$default(() => Date.now()).notNull(),
+  createdAt: int().notNull(),
+  updatedAt: int().notNull(),
 });
 
 export const session = sqliteTable("session", {
@@ -42,6 +42,6 @@ export const verification = sqliteTable("verification", {
   identifier: text().notNull(),
   value: text().notNull(),
   expiresAt: int().notNull(),
-  createdAt: int().$default(() => Date.now()).notNull(),
-  updatedAt: int().$default(() => Date.now()).notNull(),
+  createdAt: int().notNull(),
+  updatedAt: int().notNull(),
 });
