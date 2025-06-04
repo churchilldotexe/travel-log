@@ -1,28 +1,28 @@
 import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const user = sqliteTable("user", {
-  id: int().primaryKey({ autoIncrement: true }),
+  id: text().primaryKey(),
   name: text().notNull(),
   email: text().notNull().unique(),
   emailVerified: int({ mode: "boolean" }).$defaultFn(() => false).notNull(),
   image: text(),
-  createdAt: int().$default(() => Date.now()).notNull(),
-  updatedAt: int().$default(() => Date.now()).notNull(),
+  createdAt: int({ mode: "timestamp_ms" }).notNull(),
+  updatedAt: int({ mode: "timestamp_ms" }).notNull().$onUpdate(() => new Date()),
 });
 
 export const session = sqliteTable("session", {
-  id: int().primaryKey({ autoIncrement: true }),
+  id: text().primaryKey(),
   expiresAt: int({ mode: "timestamp" }).notNull(),
   token: text().notNull().unique(),
-  createdAt: int().notNull(),
-  updatedAt: int().notNull(),
+  createdAt: int({ mode: "timestamp_ms" }).notNull(),
+  updatedAt: int({ mode: "timestamp_ms" }).notNull().$onUpdate(() => new Date()),
   ipAddress: text(),
   userAgent: text(),
   userId: text().notNull().references(() => user.id, { onDelete: "cascade" }),
 });
 
 export const account = sqliteTable("account", {
-  id: int().primaryKey({ autoIncrement: true }),
+  id: text().primaryKey(),
   accountId: text().notNull(),
   providerId: text().notNull(),
   userId: text().notNull().references(() => user.id, { onDelete: "cascade" }),
@@ -33,15 +33,15 @@ export const account = sqliteTable("account", {
   refreshTokenExpiresAt: int(),
   scope: text(),
   password: text(),
-  createdAt: int().notNull(),
-  updatedAt: int().notNull(),
+  createdAt: int({ mode: "timestamp_ms" }).notNull(),
+  updatedAt: int({ mode: "timestamp_ms" }).notNull().$onUpdate(() => new Date()),
 });
 
 export const verification = sqliteTable("verification", {
   id: text().primaryKey(),
   identifier: text().notNull(),
   value: text().notNull(),
-  expiresAt: int().notNull(),
-  createdAt: int().$default(() => Date.now()).notNull(),
-  updatedAt: int().$default(() => Date.now()).notNull(),
+  expiresAt: int({ mode: "timestamp_ms" }).notNull(),
+  createdAt: int({ mode: "timestamp_ms" }).notNull(),
+  updatedAt: int({ mode: "timestamp_ms" }).notNull().$onUpdate(() => new Date()),
 });
