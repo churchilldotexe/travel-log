@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useAuthStore } from "~/store/auth";
+
+const authStore = useAuthStore();
+</script>
+
 <template>
   <div class="hero bg-base-200 container mx-auto mt-4 min-h-96">
     <div class="hero-content text-center">
@@ -10,7 +16,10 @@
           notes to create a digital journal of your journeys.
         </p>
 
-        <AuthBtn />
+        <AuthBtn v-if="!authStore.user" />
+        <NuxtLink v-else to="/dashboard" class="btn btn-primary">
+          Start Logging
+        </NuxtLink>
       </div>
     </div>
   </div>
