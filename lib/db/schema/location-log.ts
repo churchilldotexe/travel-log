@@ -12,7 +12,7 @@ export const locationLog = sqliteTable("locationLog", {
   lat: real().notNull(),
   long: real().notNull(),
   locationId: int().references(() => location.id, { onDelete: "cascade" }),
-  userId: int().references(() => user.id, { onDelete: "cascade" }),
+  userId: text().references(() => user.id, { onDelete: "cascade" }),
   createdAt: int().$default(() => Date.now()),
   updatedAt: int().$default(() => Date.now()).$onUpdate(() => Date.now()),
 });

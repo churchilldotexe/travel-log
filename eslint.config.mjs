@@ -13,6 +13,12 @@ export default antfu({
   ignores: [".pnpm-store/**", "nuxt.config.ts", "**/migrations/*"],
 }, {
   rules: {
+    "vue/max-attributes-per-line": ["error", {
+      singleline: { max: 3 },
+      multiline: {
+        max: 1,
+      },
+    }],
     "ts/no-redeclare": "off",
     "ts/consistent-type-definitions": ["error", "type"],
     "no-console": ["warn"],
