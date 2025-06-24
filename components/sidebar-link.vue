@@ -11,7 +11,8 @@ const route = useRoute();
 
 <template>
   <div
-    class="tooltip tooltip-right" :class="{ contents: props.showLabel, block: !props.showLabel }"
+    class="tooltip tooltip-right"
+    :class="{ contents: props.showLabel, block: !props.showLabel }"
     :data-tip="props.showLabel ? undefined : props.label"
   >
     <NuxtLink
@@ -19,7 +20,9 @@ const route = useRoute();
         'btn-active': route.path === props.href,
         'justify-start': props.showLabel,
         'justify-center': !props.showLabel,
-      }" class="btn btn-outline btn-primary" :to="props.href"
+      }"
+      class="btn btn-outline btn-primary"
+      :to="props.href"
     >
       <Icon :name="props.icon" size="20" />
 
